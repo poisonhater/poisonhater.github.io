@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PoisonHater ♥ Usman & Eshuu — Our World</title>
+<meta name="description" content="PoisonHater — Usman (Hater) & Eshuu (Poison). Our own world, pink & black, Midnight Romance.">
+<style>
+  :root{--pink:#ff5da2;--pink2:#ff8fb8;--pink3:#ffd6e8;--black:#0b0b10;--card:#17121c;--white:#fff5f9}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--white);font-family:'Segoe UI',system-ui,sans-serif;overflow-x:hidden}
+  a{color:var(--pink2);text-decoration:none}
+  /* birthday countdown to 29 Nov */
+function btick(){
+  const target = new Date('2026-11-29T00:00:00');
+  const diff = Math.max(0, target - Date.now());
+  document.getElementById('bd').textContent = Math.floor(diff/864e5);
+  document.getElementById('bh').textContent = Math.floor(diff/36e5)%24;
+  document.getElementById('bm').textContent = Math.floor(diff/6e4)%60;
+  document.getElementById('bs').textContent = Math.floor(diff/1e3)%60;
+}
+btick(); setInterval(btick, 1000);
+
+/* floating hearts */
+  .heart{position:fixed;bottom:-40px;font-size:20px;animation:floatUp linear forwards;pointer-events:none;z-index:1;opacity:.8}
+  @keyframes floatUp{to{transform:translateY(-110vh) rotate(40deg);opacity:0}}
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(11,11,16,.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,93,162,.25)}
+  .logo{font-weight:800;font-size:20px}.logo span{color:var(--pink)}
+  nav .links{display:flex;gap:18px;font-size:14px}
+  @media(max-width:640px){nav .links{display:none}}
+  /* hero */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:110px 20px 60px;background:radial-gradient(circle at 20% 20%,rgba(255,93,162,.28),transparent 40%),radial-gradient(circle at 80% 80%,rgba(255,93,162,.18),transparent 40%)}
+  .badge{background:rgba(255,93,162,.15);border:1px solid var(--pink);color:var(--pink3);padding:7px 16px;border-radius:999px;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+  h1{font-size:clamp(44px,9vw,92px);line-height:1.05;margin:22px 0 10px;font-weight:900}
+  h1 .pink{color:var(--pink);text-shadow:0 0 30px rgba(255,93,162,.6)}
+  .sub{font-size:clamp(16px,3vw,22px);color:#f3c6da;max-width:620px}
+  .btns{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .btn{background:var(--pink);color:#fff;padding:13px 26px;border-radius:999px;font-weight:700;box-shadow:0 8px 30px rgba(255,93,162,.45)}
+  .btn.ghost{background:transparent;border:1px solid var(--pink);color:var(--pink2);box-shadow:none}
+  /* counter */
+  .counter{display:flex;gap:12px;margin-top:38px;flex-wrap:wrap;justify-content:center}
+  .box{background:var(--card);border:1px solid rgba(255,93,162,.35);border-radius:18px;padding:16px 18px;min-width:86px}
+  .box b{font-size:30px;color:var(--pink);display:block}.box small{color:#d9a9c2;letter-spacing:1px;text-transform:uppercase;font-size:11px}
+  /* sections */
+  section{padding:80px 20px;max-width:1080px;margin:auto;position:relative;z-index:2}
+  .title{text-align:center;font-size:clamp(30px,5vw,44px);margin-bottom:8px}.title span{color:var(--pink)}
+  .desc{text-align:center;color:#d9a9c2;margin-bottom:36px}
+  .marquee{overflow:hidden;white-space:nowrap;border-top:1px solid rgba(255,93,162,.3);border-bottom:1px solid rgba(255,93,162,.3);padding:14px 0;color:var(--pink2);font-weight:700}
+  .marquee div{display:inline-block;animation:scroll 22s linear infinite}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  /* timeline */
+  .timeline{border-left:2px solid var(--pink);margin-left:12px;padding-left:28px;display:grid;gap:26px}
+  .event{position:relative;background:var(--card);border:1px solid rgba(255,93,162,.25);padding:20px;border-radius:18px}
+  .event::before{content:'♥';position:absolute;left:-43px;top:16px;background:var(--pink);color:#fff;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:14px}
+  .event h3{color:var(--pink2);margin-bottom:6px}.event time{font-size:12px;color:#c98aa9;text-transform:uppercase;letter-spacing:1px}
+  /* cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid rgba(255,93,162,.25);border-radius:20px;padding:24px;text-align:center}
+  .card .icon{font-size:34px}.card h3{margin:10px 0 6px;color:var(--pink2)}
+  .card p,.event p{color:#eed7e4;line-height:1.6}
+  /* gallery */
+  .photo{height:250px;border-radius:20px;display:flex;align-items:flex-end;padding:16px;font-weight:700;background-size:cover;background-position:center;border:1px solid rgba(255,93,162,.35)}
+  /* letters */
+  .letter{text-align:left;cursor:pointer;transition:.2s}.letter:hover{transform:translateY(-4px);border-color:var(--pink)}
+  .letter .body{display:none;margin-top:10px;color:#eed7e4;line-height:1.6}.letter.open .body{display:block}
+  /* bucket */
+  .bucket{max-width:640px;margin:auto;display:grid;gap:12px}
+  .bucket label{background:var(--card);border:1px solid rgba(255,93,162,.25);padding:16px 18px;border-radius:14px;display:flex;gap:12px;align-items:center;cursor:pointer}
+  .bucket input{accent-color:var(--pink);width:18px;height:18px}
+  footer{text-align:center;padding:40px 20px 60px;color:#c98aa9;border-top:1px solid rgba(255,93,162,.2)}
+  footer b{color:var(--pink)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo" id="navLogo">Poison<span>♥</span>Hater</div>
+  <div class="links">
+    <a href="#birthday">Birthday 🎂</a><a href="#story">Our Story</a><a href="#reasons">Reasons</a><a href="#gallery">Gallery</a><a href="#letters">Letters</a><a href="#bucket">Bucket List</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="badge" id="badge">My Wifeyy ♥ Est. Forever</div>
+  <h1><span id="name1">Usman</span> <span class="pink">&amp;</span><br><span id="name2" class="pink">Eshuu</span></h1>
+  <img src="photos/usman-eshu.jpg" alt="Usman and Eshuu" style="width:min(340px,82vw);border-radius:24px;border:3px solid var(--pink);box-shadow:0 0 45px rgba(255,93,162,.65);margin:26px 0 6px">
+  <div style="font-family:cursive;font-size:34px;color:#fff;text-shadow:0 0 18px var(--pink)">love</div>
+  <p class="sub" id="tagline">In a world of billions, my heart chose you — every day, in every lifetime, it's always you, wifeyy.</p>
+  <div class="btns">
+    <a class="btn" href="#story">Our Story ↓</a>
+    <a class="btn ghost" href="#letters">Open a Love Letter 💌</a>
+  </div>
+  <div class="counter">
+    <div class="box"><b id="d">0</b><small>Days</small></div>
+    <div class="box"><b id="h">0</b><small>Hours</small></div>
+    <div class="box"><b id="m">0</b><small>Minutes</small></div>
+    <div class="box"><b id="s">0</b><small>Seconds</small></div>
+  </div>
+  <p style="margin-top:14px;color:#d9a9c2" id="sinceText">of loving you — and counting…</p>
+</header>
+
+<div class="marquee"><div id="marqueeText"></div></div>
+
+
+<section id="birthday" style="text-align:center">
+  <h2 class="title">Poison's <span>Birthday</span> 🎂</h2>
+  <p class="desc">29 November — her first birthday with me. Counting every second, butterfly 🦋</p>
+  <div style="font-size:110px;line-height:1;filter:drop-shadow(0 0 25px rgba(255,93,162,.8))">🎂</div>
+  <div class="counter" style="margin-top:18px">
+    <div class="box"><b id="bd">0</b><small>Days Left</small></div>
+    <div class="box"><b id="bh">0</b><small>Hours</small></div>
+    <div class="box"><b id="bm">0</b><small>Minutes</small></div>
+    <div class="box"><b id="bs">0</b><small>Seconds</small></div>
+  </div>
+  <div class="btns"><button class="btn" onclick="document.getElementById('bnote').style.display='flex'">Open Her Birthday Note 💌</button></div>
+</section>
+<div id="bnote" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99;align-items:center;justify-content:center;padding:20px" onclick="this.style.display='none'">
+  <div style="background:#17121c;border:2px solid var(--pink);border-radius:24px;padding:36px;max-width:520px;text-align:center;box-shadow:0 0 60px rgba(255,93,162,.7)">
+    <div style="font-size:54px">🎂🦋💗</div>
+    <p style="font-size:22px;line-height:1.6;margin-top:14px">AY AY AY , I LOVE YOUR BUTTERFLY . Happy birth day Usha ki mama ......</p>
+    <p style="color:#d9a9c2;margin-top:12px;font-size:13px">tap anywhere to close</p>
+  </div>
+</div>
+
+<section id="story">
+  <h2 class="title">Our <span>Story</span> 📖</h2>
+  <p class="desc">Every love story is beautiful, but ours is my favourite.</p>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<section id="reasons">
+  <h2 class="title">Reasons I <span>Love You</span> 💗</h2>
+  <p class="desc">Just a few of the million reasons.</p>
+  <div class="grid" id="reasonsGrid"></div>
+</section>
+
+<section id="gallery">
+  <h2 class="title">Our <span>Gallery</span> 📸</h2>
+  <p class="desc">Add your favourite photos together — edit the list in the CONFIG below.</p>
+  <div class="grid" id="galleryGrid"></div>
+</section>
+
+<section id="letters">
+  <h2 class="title">Open <span>When…</span> 💌</h2>
+  <p class="desc">Tap a letter to open it, wifeyy.</p>
+  <div class="grid" id="lettersGrid"></div>
+</section>
+
+<section id="bucket">
+  <h2 class="title">Our <span>Bucket List</span> ✨</h2>
+  <p class="desc">Dreams we will tick off together, one by one.</p>
+  <div class="bucket" id="bucketList"></div>
+</section>
+
+<section style="text-align:center">
+  <h2 class="title">My <span>Promise</span> 💍</h2>
+  <p class="desc" style="max-width:640px;margin:auto;line-height:1.8" id="promise"></p>
+</section>
+
+<footer>
+  Made with <b>♥</b> by <span id="footNames">Tayn for Usha</span><br>
+  <small>Forever &amp; always — pink, black &amp; us.</small>
+</footer>
+
+<script>
+/* ============================================================
+   ★★★  EDIT EVERYTHING HERE — ONLY THIS CONFIG BLOCK  ★★★
+   Change names, date, texts, photos below. Save the file,
+   upload to GitHub, and the whole website updates.
+   You do NOT need to touch any code above this.
+============================================================ */
+const CONFIG = {
+  yourName: "Usman",
+  yourCallName: "Hater",
+  partnerName: "Eshuu",
+  partnerCallName: "Poison",
+  partnerNickname: "Poison",
+  siteName: "PoisonHater",
+  startDate: "2026-09-26",          // deep relation start — 26 Sep 2026, at night
+  tagline: "Poison ♥ Hater — she is my Poison, I am her Hater, and together we are PoisonHater. Our own world, just us two, wifeyy.",
+  promise: "I promise to choose you on the good days and hold you tighter on the hard ones. To annoy you a little, protect you a lot, and love you more than yesterday — every single day. You are my home, Eshuu. — Your Hater, Usman (18 March) ♥ for his Poison, Eshuu (29 November)",
+
+  story: [
+    { date: "26 Sep 2026 — Night", title: "Where We Truly Began 🌙", text: "The night our deep relation started. From that night, everything changed — you became my world, Poison." },
+    { date: "Our Photo", title: "Usman 👑 & Eshu 🎀", text: "Two little fingers, one crown, one bow — and a whole universe of love between them. Pink roses, black flowers, and us." },
+    { date: "29 Nov 2026", title: "Her First Birthday With Me 🎂", text: "Poison's birthday — her first one with me. AY AY AY, I love your butterfly 🦋" },
+    { date: "Today", title: "Still Falling 💗", text: "Every day with you feels like the first day — only better. Forever to go, wifeyy." }
+  ],
+
+  reasons: [
+    { icon: "🦋", title: "Your Butterfly", text: "AY AY AY — I love your butterfly. Enough said." },
+    { icon: "😊", title: "Your Smile", text: "It fixes days you don't even know were broken." },
+    { icon: "🤍", title: "Your Heart", text: "The kindest, softest heart I have ever known." },
+    { icon: "😂", title: "Your Laugh", text: "My favourite sound in the whole world." },
+    { icon: "🌙", title: "Your Presence", text: "Even your silence feels like home to me." },
+    { icon: "👑", title: "Simply You", text: "No reason needed. It's just you, Poison." }
+  ],
+
+  gallery: [
+    { img: "photos/usman-eshu.jpg", caption: "Usman 👑 & Eshu 🎀 — our photo" },
+    { img: "", caption: "That perfect day 🌸" },
+    { img: "", caption: "Us, always us 🖤" },
+    { img: "", caption: "My favourite smile 😍" }
+  ],
+
+  letters: [
+    { title: "Open when you miss me 💌", text: "Close your eyes, Poison. I'm right there — in every heartbeat, in every thought. Distance means so little when someone means so much. I love you. — Hater" },
+    { title: "Open when you're sad 🌧️", text: "Hey wifeyy, breathe. Bad days don't last, but we do. I'm holding your hand through this — always. You are loved more than you know." },
+    { title: "Open when you can't sleep 🌙", text: "Count the stars, and for each one, that's a reason I love you. Now sleep peacefully — tomorrow I'll love you even more." },
+    { title: "Open on your birthday 🎂", text: "AY AY AY , I LOVE YOUR BUTTERFLY . Happy birth day Usha ki mama ......" }
+  ],
+
+  bucket: [
+    "Celebrate her first birthday with me — 29 Nov 2026 🎂",
+    "Watch a sunset together at the beach 🌅",
+    "A long road trip, just us two 🚗",
+    "Cook our favourite meal together 🍝",
+    "Stargazing night under the open sky 🌌",
+    "Take 100 cute photos in one day 📸",
+    "Build our dream home together 🏡",
+    "Grow old together — the final boss 👴♥👵"
+  ]
+};
+/* ================= END OF CONFIG — code below runs the site ================= */
+
+document.title = `PoisonHater ♥ ${CONFIG.yourName} & ${CONFIG.partnerName} — Our World`;
+document.getElementById('navLogo').innerHTML = `Poison<span>♥</span>Hater`;
+document.getElementById('name1').textContent = CONFIG.yourName;
+document.getElementById('name2').textContent = CONFIG.partnerName;
+document.getElementById('badge').textContent = `My ${CONFIG.partnerNickname} ♥ Est. Forever`;
+document.getElementById('tagline').textContent = CONFIG.tagline;
+document.getElementById('promise').textContent = CONFIG.promise;
+document.getElementById('footNames').textContent = `${CONFIG.yourName} for ${CONFIG.partnerName}`;
+document.getElementById('sinceText').textContent = `of loving you since ${new Date(CONFIG.startDate).toDateString()} — and counting…`;
+
+const phrase = ` ${CONFIG.yourName} ♥ ${CONFIG.partnerName} • FOREVER • MY ${CONFIG.partnerNickname.toUpperCase()} • `;
+document.getElementById('marqueeText').textContent = phrase.repeat(6);
+
+document.getElementById('timeline').innerHTML = CONFIG.story.map(e =>
+  `<div class="event"><time>${e.date}</time><h3>${e.title}</h3><p>${e.text}</p></div>`).join('');
+
+document.getElementById('reasonsGrid').innerHTML = CONFIG.reasons.map(r =>
+  `<div class="card"><div class="icon">${r.icon}</div><h3>${r.title}</h3><p>${r.text}</p></div>`).join('');
+
+const gradients = ['linear-gradient(135deg,#ff5da2,#7a103f)','linear-gradient(135deg,#2b0a1a,#ff8fb8)','linear-gradient(135deg,#ff8fb8,#3d0f26)','linear-gradient(135deg,#571233,#ff5da2)'];
+document.getElementById('galleryGrid').innerHTML = CONFIG.gallery.map((g,i) =>
+  `<div class="photo" style="background-image:${g.img ? `url('${g.img}'),` : ''}${gradients[i%4]}">${g.img ? '' : '💗 '}${g.caption}</div>`).join('');
+
+document.getElementById('lettersGrid').innerHTML = CONFIG.letters.map(l =>
+  `<div class="card letter" onclick="this.classList.toggle('open')"><div class="icon">💌</div><h3>${l.title}</h3><p>Tap to open…</p><div class="body">${l.text}</div></div>`).join('');
+
+document.getElementById('bucketList').innerHTML = CONFIG.bucket.map(b =>
+  `<label><input type="checkbox"> <span>${b}</span></label>`).join('');
+
+/* live love counter */
+function tick(){
+  const diff = Math.max(0, Date.now() - new Date(CONFIG.startDate).getTime());
+  document.getElementById('d').textContent = Math.floor(diff/864e5);
+  document.getElementById('h').textContent = Math.floor(diff/36e5)%24;
+  document.getElementById('m').textContent = Math.floor(diff/6e4)%60;
+  document.getElementById('s').textContent = Math.floor(diff/1e3)%60;
+}
+tick(); setInterval(tick, 1000);
+
+/* birthday countdown to 29 Nov */
+function btick(){
+  const target = new Date('2026-11-29T00:00:00');
+  const diff = Math.max(0, target - Date.now());
+  document.getElementById('bd').textContent = Math.floor(diff/864e5);
+  document.getElementById('bh').textContent = Math.floor(diff/36e5)%24;
+  document.getElementById('bm').textContent = Math.floor(diff/6e4)%60;
+  document.getElementById('bs').textContent = Math.floor(diff/1e3)%60;
+}
+btick(); setInterval(btick, 1000);
+
+/* floating hearts */
+setInterval(() => {
+  const h = document.createElement('div');
+  h.className = 'heart'; h.textContent = ['💗','💖','🖤','✨'][Math.floor(Math.random()*4)];
+  h.style.left = Math.random()*100 + 'vw';
+  h.style.animationDuration = (5 + Math.random()*5) + 's';
+  document.body.appendChild(h); setTimeout(() => h.remove(), 10000);
+}, 900);
+</script>
+</body>
+</html>
