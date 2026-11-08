@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PoisonHater ♥ Usman & Eshuu — Our World</title>
-<meta name="description" content="PoisonHater — Usman (Hater) & Eshuu (Poison). Our own world, pink & black, Midnight Romance.">
+<title>PoisonHater ♥ Usman & Eshuu, Our World</title>
+<meta name="description" content="PoisonHater, Usman (Hater) & Eshuu (Poison). Our own world, pink & black, Midnight Romance.">
 <style>
   :root{--pink:#ff5da2;--pink2:#ff8fb8;--pink3:#ffd6e8;--black:#0b0b10;--card:#17121c;--white:#fff5f9}
   *{margin:0;padding:0;box-sizing:border-box}
@@ -21,6 +21,44 @@ function btick(){
   document.getElementById('bs').textContent = Math.floor(diff/1e3)%60;
 }
 btick(); setInterval(btick, 1000);
+
+
+/* 1095 daily notes engine */
+const NOTE_A = ["Good morning, my Poison.","Hello, my butterfly.","For you today, my love.","A small note, only for you.","Day by day, it is still you.","From Mansehra, with all my heart.","Across the miles, I am right beside you.","Open this and smile, my Poison.","One more day of us.","Thinking of you before anything else.","You crossed my mind first today.","This one is yours, like every day."];
+const NOTE_B = ["You are my Poison and I am your Hater, and that is my favourite truth.","Distance is only a map. My heart never learned it.","You healed places in me that I had hidden from everyone.","Your laugh is still my favourite sound in the world.","I choose you again today, quietly and completely.","Every hard day feels lighter when I remember you are mine.","You turned ordinary days into a story I never want to end.","My day starts better the moment your name lights my phone.","You are my calm, my chaos, my home.","Loving you is the easiest decision I make every single day.","You are still on your way to healing me, and I feel it every day.","We are so close now that we sip each other's poison and call it love.","Your smile can fix a day you never even saw.","I am proud of you, today and always.","No amount of miles can lower my love by even one drop.","You are my today, my tomorrow, and my whole life.","When I pray, your name is always inside my prayer.","You are the softest part of my life and the strongest part of my heart.","I miss you in a way words keep failing to carry.","Forever did not scare me once you arrived."];
+const NOTE_C = ["Dhaka and Mansehra are far, but you feel close enough to touch.","Close your eyes and count my heartbeats. Every one says your name.","Until the day distance ends, these notes will sit with you daily.","Read this slowly. I wrote it as if I was sitting right next to you.","Miles can delay a hug. They cannot delay love.","One day these notes will be memories we laugh about together.","Stay strong today. Your Hater is standing with you from far away.","The sky above Dhaka and the sky above Mansehra are the same sky.","Every night, look at the moon. I am looking at it too.","This distance is a chapter, never the whole book.","Keep this note for the hours when missing me gets heavy.","You are worth every mile, every wait, every second.","Soon is a promise I carry carefully.","Our story crossed games, apps and cities to reach this heart.","Hold on a little more. We have a whole life waiting for us."];
+const NOTE_D = ["Forever yours, Hater.","With all of me, Usman.","Love you, always.","Your Hater, today and every day.","A kiss on your forehead from far away.","Now smile. That is an order from your Hater.","Until tomorrow, my Poison.","You are loved. Never doubt it.","Sleep well tonight, my butterfly.","Day complete. You are still my favourite part of it."];
+const NOTE_SPECIAL = {
+  1: "Day one of 1095. From today, you will never spend a day without my words. You are my Poison and I am your Hater, and this is our promise written day by day for three years.",
+  65: "Today is special, my Poison. Your first birthday with me, 29 November. AY AY AY , I LOVE YOUR BUTTERFLY . Happy birth day Usha ki mama ...... Blow the candles on this page and know that your Hater is celebrating you from Mansehra with his whole heart.",
+  365: "365 notes. One full year of my words reaching you every day. If you have read them all, you have carried me with you for a year, and I have carried you in every single line.",
+  730: "730 notes. Two years of us, day by day. Distance is still losing, my Poison. It will keep losing until day 1095 and long after that.",
+  1095: "Day 1095. Three years of notes, three years of you and me. If you are reading this, we made it through the distance together. Now close this page and get ready, because the whole life part is next. Forever yours, Hater."
+};
+let currentNote = 1;
+function noteForDay(n){
+  if (NOTE_SPECIAL[n]) return NOTE_SPECIAL[n];
+  const i = n - 1;
+  const a = NOTE_A[i % 12];
+  const b = NOTE_B[Math.floor(i / 12) % 20];
+  const c = NOTE_C[Math.floor(i / 240) % 15];
+  const d = NOTE_D[i % 10];
+  return a + " " + b + " " + c + " " + d;
+}
+function todayNote(){
+  const start = new Date("2026-09-26T00:00:00");
+  const now = new Date(); now.setHours(0,0,0,0);
+  return Math.min(1095, Math.max(1, Math.floor((now - start) / 864e5) + 1));
+}
+function showNote(n){
+  currentNote = Math.min(1095, Math.max(1, n));
+  const d = new Date("2026-09-26T00:00:00"); d.setDate(d.getDate() + currentNote - 1);
+  document.getElementById('noteTitle').textContent = "Note " + currentNote + " of 1095";
+  document.getElementById('noteDate').textContent = d.toDateString();
+  document.getElementById('noteText').textContent = noteForDay(currentNote);
+  document.getElementById('notes').scrollIntoView({behavior:"smooth", block:"center"});
+}
+showNote(todayNote());
 
 /* floating hearts */
   .heart{position:fixed;bottom:-40px;font-size:20px;animation:floatUp linear forwards;pointer-events:none;z-index:1;opacity:.8}
@@ -78,7 +116,7 @@ btick(); setInterval(btick, 1000);
 <nav>
   <div class="logo" id="navLogo">Poison<span>♥</span>Hater</div>
   <div class="links">
-    <a href="#birthday">Birthday 🎂</a><a href="#story">Our Story</a><a href="#reasons">Reasons</a><a href="#gallery">Gallery</a><a href="#letters">Letters</a><a href="#bucket">Bucket List</a>
+    <a href="#birthday">Birthday 🎂</a><a href="#story">Our Story</a><a href="#reasons">Reasons</a><a href="#gallery">Gallery</a><a href="#letters">Letters</a><a href="#bucket">Bucket List</a><a href="#notes">1095 Notes</a><a href="#contact">Contact</a>
   </div>
 </nav>
 
@@ -87,7 +125,7 @@ btick(); setInterval(btick, 1000);
   <h1><span id="name1">Usman</span> <span class="pink">&amp;</span><br><span id="name2" class="pink">Eshuu</span></h1>
   <img src="photos/usman-eshu.jpg" alt="Usman and Eshuu" style="width:min(340px,82vw);border-radius:24px;border:3px solid var(--pink);box-shadow:0 0 45px rgba(255,93,162,.65);margin:26px 0 6px">
   <div style="font-family:cursive;font-size:34px;color:#fff;text-shadow:0 0 18px var(--pink)">love</div>
-  <p class="sub" id="tagline">In a world of billions, my heart chose you — every day, in every lifetime, it's always you, wifeyy.</p>
+  <p class="sub" id="tagline">In a world of billions, my heart chose you, every day, in every lifetime, it's always you, wifeyy.</p>
   <div class="btns">
     <a class="btn" href="#story">Our Story ↓</a>
     <a class="btn ghost" href="#letters">Open a Love Letter 💌</a>
@@ -98,7 +136,7 @@ btick(); setInterval(btick, 1000);
     <div class="box"><b id="m">0</b><small>Minutes</small></div>
     <div class="box"><b id="s">0</b><small>Seconds</small></div>
   </div>
-  <p style="margin-top:14px;color:#d9a9c2" id="sinceText">of loving you — and counting…</p>
+  <p style="margin-top:14px;color:#d9a9c2" id="sinceText">of loving you, and counting…</p>
 </header>
 
 <div class="marquee"><div id="marqueeText"></div></div>
@@ -106,7 +144,7 @@ btick(); setInterval(btick, 1000);
 
 <section id="birthday" style="text-align:center">
   <h2 class="title">Poison's <span>Birthday</span> 🎂</h2>
-  <p class="desc">29 November — her first birthday with me. Counting every second, butterfly 🦋</p>
+  <p class="desc">29 November. Your first birthday with me. Counting every second, butterfly 🦋</p>
   <div style="font-size:110px;line-height:1;filter:drop-shadow(0 0 25px rgba(255,93,162,.8))">🎂</div>
   <div class="counter" style="margin-top:18px">
     <div class="box"><b id="bd">0</b><small>Days Left</small></div>
@@ -128,6 +166,24 @@ btick(); setInterval(btick, 1000);
   <h2 class="title">Our <span>Story</span> 📖</h2>
   <p class="desc">Every love story is beautiful, but ours is my favourite.</p>
   <div class="timeline" id="timeline"></div>
+  <div style="margin-top:34px;background:var(--card);border:1px solid rgba(255,93,162,.35);border-radius:22px;padding:26px;text-align:center">
+    <h3 style="color:var(--pink2);font-size:24px;margin-bottom:6px">How We Found Each Other 🛤️</h3>
+    <p style="color:#d9a9c2;margin-bottom:20px">One meeting, so many worlds crossed, one whole life found.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;font-weight:700">
+      <span style="background:rgba(255,93,162,.15);border:1px solid var(--pink);padding:10px 14px;border-radius:999px">🎮 Meet at PUBG</span><span style="color:var(--pink)">➜</span>
+      <span style="background:rgba(255,93,162,.15);border:1px solid var(--pink);padding:10px 14px;border-radius:999px">🎵 Then TikTok</span><span style="color:var(--pink)">➜</span>
+      <span style="background:rgba(255,93,162,.15);border:1px solid var(--pink);padding:10px 14px;border-radius:999px">📸 Then Instagram</span><span style="color:var(--pink)">➜</span>
+      <span style="background:rgba(255,93,162,.15);border:1px solid var(--pink);padding:10px 14px;border-radius:999px">❤️ Then Heart</span><span style="color:var(--pink)">➜</span>
+      <span style="background:rgba(255,93,162,.15);border:1px solid var(--pink);padding:10px 14px;border-radius:999px">✨ Then Soul</span><span style="color:var(--pink)">➜</span>
+      <span style="background:rgba(255,93,162,.15);border:1px solid var(--pink);padding:10px 14px;border-radius:999px">👅 Then Tongue</span><span style="color:var(--pink)">➜</span>
+      <span style="background:rgba(255,93,162,.15);border:1px solid var(--pink);padding:10px 14px;border-radius:999px">👀 Then Eyes</span><span style="color:var(--pink)">➜</span>
+      <span style="background:var(--pink);color:#fff;padding:10px 16px;border-radius:999px;box-shadow:0 0 24px rgba(255,93,162,.7)">♾️ Then Whole Life</span>
+    </div>
+    <p style="color:#eed7e4;line-height:1.9;margin-top:22px;text-align:left">
+      You are the one who healed me. You are still on your way, and every day you reach a new corner of my heart and make it soft again. Now we are so close that we sip each other's poison and smile, because what the world calls poison only tastes sweet between you and me. You are my Poison and I am your Hater, in healing, in love, in whole life. Distance put oceans between our cities, but it never stood a chance against a story that crossed PUBG, TikTok and Instagram just to find its heart, its soul, and its whole life.
+    </p>
+  </div>
+
 </section>
 
 <section id="reasons">
@@ -138,7 +194,7 @@ btick(); setInterval(btick, 1000);
 
 <section id="gallery">
   <h2 class="title">Our <span>Gallery</span> 📸</h2>
-  <p class="desc">Add your favourite photos together — edit the list in the CONFIG below.</p>
+  <p class="desc">Add your favourite photos together, edit the list in the CONFIG below.</p>
   <div class="grid" id="galleryGrid"></div>
 </section>
 
@@ -154,6 +210,47 @@ btick(); setInterval(btick, 1000);
   <div class="bucket" id="bucketList"></div>
 </section>
 
+
+<section id="notes">
+  <h2 class="title">1095 <span>Notes For You</span> 💌</h2>
+  <p class="desc">One note for every day, for three full years, because you are far and my words will reach you daily. Every note is new. Start from day one or open todays note.</p>
+  <div class="card" style="max-width:680px;margin:auto;text-align:left">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <h3 id="noteTitle" style="color:var(--pink2)">Note of the day</h3>
+      <small id="noteDate" style="color:#c98aa9"></small>
+    </div>
+    <p id="noteText" style="margin-top:12px;font-size:17px"></p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center">
+      <button class="btn ghost" onclick="showNote(currentNote-1)">⬅ Previous</button>
+      <button class="btn" onclick="showNote(todayNote())">Todays note</button>
+      <button class="btn ghost" onclick="showNote(currentNote+1)">Next ➡</button>
+      <input id="noteJump" type="number" min="1" max="1095" placeholder="Day 1 to 1095" style="background:#0b0b10;border:1px solid var(--pink);color:#fff;padding:11px 14px;border-radius:999px;width:150px">
+      <button class="btn ghost" onclick="showNote(parseInt(document.getElementById('noteJump').value)||1)">Open day</button>
+    </div>
+    <p style="color:#c98aa9;margin-top:14px;font-size:13px">1095 days of us, starting 26 September 2026. One note a day keeps the distance away.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="title">Contact And <span>Location</span> 📍</h2>
+  <p class="desc">At the end of everything, here is how the world can find us, and where our two cities wait for us.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">📞</div><h3>Contact</h3>
+      <p>1903140137<br>3245112016</p>
+      <p style="margin-top:10px">Gmail<br>usmanali1832005@gmail.com<br>boniitaahmeed17@gmail.com</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌸</div><h3>Eshuu, Dhaka</h3>
+      <p>Dhaka ki Eshuu<br>Kazi Bari, Block K, South Banasree,<br>Dhaka 1219</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏔️</div><h3>Usman, Mansehra</h3>
+      <p>Mansehra ki Usman<br>Main Bypass, near Pervaiz Shaheed Chowk,<br>Mansehra</p>
+    </div>
+  </div>
+</section>
+
 <section style="text-align:center">
   <h2 class="title">My <span>Promise</span> 💍</h2>
   <p class="desc" style="max-width:640px;margin:auto;line-height:1.8" id="promise"></p>
@@ -161,12 +258,12 @@ btick(); setInterval(btick, 1000);
 
 <footer>
   Made with <b>♥</b> by <span id="footNames">Tayn for Usha</span><br>
-  <small>Forever &amp; always — pink, black &amp; us.</small>
+  <small>Forever &amp; always, pink, black &amp; us.</small>
 </footer>
 
 <script>
 /* ============================================================
-   ★★★  EDIT EVERYTHING HERE — ONLY THIS CONFIG BLOCK  ★★★
+   ★★★  EDIT EVERYTHING HERE, ONLY THIS CONFIG BLOCK  ★★★
    Change names, date, texts, photos below. Save the file,
    upload to GitHub, and the whole website updates.
    You do NOT need to touch any code above this.
@@ -178,19 +275,19 @@ const CONFIG = {
   partnerCallName: "Poison",
   partnerNickname: "Poison",
   siteName: "PoisonHater",
-  startDate: "2026-09-26",          // deep relation start — 26 Sep 2026, at night
-  tagline: "Poison ♥ Hater — she is my Poison, I am her Hater, and together we are PoisonHater. Our own world, just us two, wifeyy.",
-  promise: "I promise to choose you on the good days and hold you tighter on the hard ones. To annoy you a little, protect you a lot, and love you more than yesterday — every single day. You are my home, Eshuu. — Your Hater, Usman (18 March) ♥ for his Poison, Eshuu (29 November)",
+  startDate: "2026-09-26",          // deep relation start, 26 Sep 2026, at night
+  tagline: "You are my Poison and I am your Hater. Together we are PoisonHater. Our own world, just us two, wifeyy.",
+  promise: "I promise to choose you on the good days and hold you tighter on the hard ones. To annoy you a little, protect you a lot, and love you more than yesterday, every single day. You are my home, Eshuu., Your Hater, Usman (18 March) ♥ for his Poison, Eshuu (29 November)",
 
   story: [
-    { date: "26 Sep 2026 — Night", title: "Where We Truly Began 🌙", text: "The night our deep relation started. From that night, everything changed — you became my world, Poison." },
-    { date: "Our Photo", title: "Usman 👑 & Eshu 🎀", text: "Two little fingers, one crown, one bow — and a whole universe of love between them. Pink roses, black flowers, and us." },
-    { date: "29 Nov 2026", title: "Her First Birthday With Me 🎂", text: "Poison's birthday — her first one with me. AY AY AY, I love your butterfly 🦋" },
-    { date: "Today", title: "Still Falling 💗", text: "Every day with you feels like the first day — only better. Forever to go, wifeyy." }
+    { date: "26 Sep 2026, Night", title: "Where We Truly Began 🌙", text: "The night our deep relation started. From that night, everything changed, you became my world, Poison." },
+    { date: "Our Photo", title: "Usman 👑 & Eshu 🎀", text: "Two little fingers, one crown, one bow, and a whole universe of love between them. Pink roses, black flowers, and us." },
+    { date: "29 Nov 2026", title: "Her First Birthday With Me 🎂", text: "Poison's birthday, her first one with me. AY AY AY, I love your butterfly 🦋" },
+    { date: "Today", title: "Still Falling 💗", text: "Every day with you feels like the first day, only better. Forever to go, wifeyy." }
   ],
 
   reasons: [
-    { icon: "🦋", title: "Your Butterfly", text: "AY AY AY — I love your butterfly. Enough said." },
+    { icon: "🦋", title: "Your Butterfly", text: "AY AY AY, I love your butterfly. Enough said." },
     { icon: "😊", title: "Your Smile", text: "It fixes days you don't even know were broken." },
     { icon: "🤍", title: "Your Heart", text: "The kindest, softest heart I have ever known." },
     { icon: "😂", title: "Your Laugh", text: "My favourite sound in the whole world." },
@@ -199,33 +296,33 @@ const CONFIG = {
   ],
 
   gallery: [
-    { img: "photos/usman-eshu.jpg", caption: "Usman 👑 & Eshu 🎀 — our photo" },
+    { img: "photos/usman-eshu.jpg", caption: "Usman 👑 & Eshu 🎀, our photo" },
     { img: "", caption: "That perfect day 🌸" },
     { img: "", caption: "Us, always us 🖤" },
     { img: "", caption: "My favourite smile 😍" }
   ],
 
   letters: [
-    { title: "Open when you miss me 💌", text: "Close your eyes, Poison. I'm right there — in every heartbeat, in every thought. Distance means so little when someone means so much. I love you. — Hater" },
-    { title: "Open when you're sad 🌧️", text: "Hey wifeyy, breathe. Bad days don't last, but we do. I'm holding your hand through this — always. You are loved more than you know." },
-    { title: "Open when you can't sleep 🌙", text: "Count the stars, and for each one, that's a reason I love you. Now sleep peacefully — tomorrow I'll love you even more." },
+    { title: "Open when you miss me 💌", text: "Close your eyes, Poison. I'm right there, in every heartbeat, in every thought. Distance means so little when someone means so much. I love you., Hater" },
+    { title: "Open when you're sad 🌧️", text: "Hey wifeyy, breathe. Bad days don't last, but we do. I'm holding your hand through this, always. You are loved more than you know." },
+    { title: "Open when you can't sleep 🌙", text: "Count the stars, and for each one, that's a reason I love you. Now sleep peacefully, tomorrow I'll love you even more." },
     { title: "Open on your birthday 🎂", text: "AY AY AY , I LOVE YOUR BUTTERFLY . Happy birth day Usha ki mama ......" }
   ],
 
   bucket: [
-    "Celebrate her first birthday with me — 29 Nov 2026 🎂",
+    "Celebrate her first birthday with me, 29 Nov 2026 🎂",
     "Watch a sunset together at the beach 🌅",
     "A long road trip, just us two 🚗",
     "Cook our favourite meal together 🍝",
     "Stargazing night under the open sky 🌌",
     "Take 100 cute photos in one day 📸",
     "Build our dream home together 🏡",
-    "Grow old together — the final boss 👴♥👵"
+    "Grow old together, the final boss 👴♥👵"
   ]
 };
-/* ================= END OF CONFIG — code below runs the site ================= */
+/* ================= END OF CONFIG, code below runs the site ================= */
 
-document.title = `PoisonHater ♥ ${CONFIG.yourName} & ${CONFIG.partnerName} — Our World`;
+document.title = `PoisonHater ♥ ${CONFIG.yourName} & ${CONFIG.partnerName}, Our World`;
 document.getElementById('navLogo').innerHTML = `Poison<span>♥</span>Hater`;
 document.getElementById('name1').textContent = CONFIG.yourName;
 document.getElementById('name2').textContent = CONFIG.partnerName;
@@ -233,7 +330,7 @@ document.getElementById('badge').textContent = `My ${CONFIG.partnerNickname} ♥
 document.getElementById('tagline').textContent = CONFIG.tagline;
 document.getElementById('promise').textContent = CONFIG.promise;
 document.getElementById('footNames').textContent = `${CONFIG.yourName} for ${CONFIG.partnerName}`;
-document.getElementById('sinceText').textContent = `of loving you since ${new Date(CONFIG.startDate).toDateString()} — and counting…`;
+document.getElementById('sinceText').textContent = `of loving you since ${new Date(CONFIG.startDate).toDateString()}, and counting…`;
 
 const phrase = ` ${CONFIG.yourName} ♥ ${CONFIG.partnerName} • FOREVER • MY ${CONFIG.partnerNickname.toUpperCase()} • `;
 document.getElementById('marqueeText').textContent = phrase.repeat(6);
