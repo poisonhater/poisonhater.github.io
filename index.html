@@ -282,7 +282,7 @@ function showNote(n){
   document.getElementById('noteTitle').textContent = "Note " + currentNote + " of 1095";
   document.getElementById('noteDate').textContent = noteDate(currentNote).toDateString();
   document.getElementById('noteText').innerHTML = noteLines(currentNote).map(function(l){ return "<p style='margin-bottom:10px'>" + l + "</p>"; }).join("");
-  document.getElementById('notes').scrollIntoView({behavior:"smooth", block:"center"});
+  const nsEl = document.getElementById('notes'); if (nsEl && nsEl.scrollIntoView) nsEl.scrollIntoView({behavior:"smooth", block:"center"});
 }
 let allPage = 1;
 const PER_PAGE = 20;
