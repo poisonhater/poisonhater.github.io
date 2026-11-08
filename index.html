@@ -253,7 +253,7 @@ function pickIndex(seed, size){
   x ^= x >>> 15;
   x = Math.imul(x, 2246822519) >>> 0;
   x ^= x >>> 13;
-  return x % size;
+  return (x >>> 0) % size;
 }
 function noteLines(n){
   if (NOTE_SPECIAL[n]) return NOTE_SPECIAL[n].split("|");
