@@ -1,5 +1,7 @@
 # PoisonHater ♥ Usman (Hater) & Eshuu (Poison) — Our World
 
+Updated 2026-11-08: contact and location section at the end, 1095 daily notes section (one new note per day for 3 years from 26 Sep 2026), story journey PUBG to TikTok to Instagram to Heart to Soul to Tongue to Eyes to Whole Life, and the healing paragraph. All site text written without dash characters.
+
 Final design: **1 — Midnight Romance** (black, neon pink glow, floating hearts).
 Totally free on GitHub Pages. Both of you can access & edit it from anywhere.
 
